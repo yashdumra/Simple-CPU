@@ -1,0 +1,30 @@
+# Quartus generated outputs and reports
+output_files/
+db/
+incremental_db/
+simulation/
+*.rpt
+*.summary
+*.smsg
+*.qws
+*.sof
+*.pof
+*.jic
+*.sld
+*.qdb
+*.qip.tmp
+
+# Waveforms / simulator output
+work/
+transcript
+vsim.wlf
+*.vcd
+*.fst
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
