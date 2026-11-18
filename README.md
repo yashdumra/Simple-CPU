@@ -4,7 +4,7 @@
 
 `SystemVerilog` · `Quartus Prime Lite` · `DE10-Lite / MAX 10` · `Digital Logic` · `ALU` · `Register File` · `Memory-Mapped I/O`
 
-> **Project status:** I implemented the ALU, register file, CPU datapath, and FPGA board interface and got the lab design working on the DE10-Lite. Source files and a board pin configuration are included. New simulation smoke tests are provided but **have not been run** in this repository environment.
+> **Built and demonstrated on DE10-Lite:** An 8-bit ALU, four-register file, manually controlled CPU datapath, 128-byte data memory, and memory-mapped output, with live register/result displays and pushbutton-driven execution.
 
 ## Project at a glance
 
@@ -102,8 +102,8 @@ Changing `selA` without advancing the clock allows you to inspect any of the fou
 │   ├── cpu_top.sv          # FPGA switches, clock/reset, LEDs and displays
 │   └── sevenseg.sv         # 4-bit hexadecimal to seven-segment decoder
 ├── sim/
-│   ├── tb_alu.sv           # New ALU smoke test (not yet executed)
-│   ├── tb_cpu.sv           # New CPU smoke test (not yet executed)
+│   ├── tb_alu.sv           # Self-checking ALU smoke test
+│   ├── tb_cpu.sv           # Self-checking CPU smoke test
 │   └── README.md           # Simulation commands and verification scope
 └── docs/
     └── architecture.md    # Detailed internal design and limitations
@@ -123,12 +123,6 @@ The uploaded `.sv.bak` files were older, mostly empty backups and are intentiona
 5. Press `KEY[0]` to reset the registers; set the `SW` bits for an instruction; press/release `KEY[1]` to execute it
 6. Observe register, result, output, and condition-code values on HEX displays and LEDs
 
-**Important:** The `cpu_top.qsf` here is a reduced, project-specific configuration derived from the supplied DE10-Lite pin map. It includes `sevenseg.sv`, which was missing from the original source-file assignments. It has not been recompiled in this environment; confirm pin mapping and Quartus warnings on your local board setup.
-
-## Verification
-
-The author verified the working design on the DE10-Lite hardware. Additional **unexecuted** ALU/CPU self-checking smoke tests are included under [sim/](sim/) with instructions in [sim/README.md](sim/README.md). They cover a subset of the datapath functions; they are not evidence of an exhaustive verification campaign.
-
 ## Engineering lessons
 
 - **Digital architecture:** Integrated arithmetic logic, multiplexers, and registers into a sequential 8-bit datapath
@@ -140,6 +134,10 @@ The author verified the working design on the DE10-Lite hardware. Additional **u
 ## Possible extensions
 
 An automatic clock, instruction memory, program counter, conditional branching, richer instruction encoding, and more extensive simulation tests would turn this manual datapath into a more complete standalone CPU.
+
+## Verification notes
+
+The CPU was demonstrated working on the DE10-Lite. The included Quartus configuration was reorganized for this repository, and the additional [ALU/CPU smoke tests](sim/README.md) have not yet been executed here; they should be run and the project recompiled before claiming reproducible simulation or build verification.
 
 ---
 
